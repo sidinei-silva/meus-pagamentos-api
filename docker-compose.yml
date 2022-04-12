@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   app:
-    container_name: boilerplate-ts-back
+    container_name: meus-pagamentos-back
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -16,9 +16,28 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
       - 9229:9229
     networks:
-      - boilerplate-ts-network
+      - meus-pagamentos-network
     restart: unless-stopped
 
+  postgres:
+    container_name: meus-pagamentos-postgres
+    image: postgres:12
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    ports:
+      - ${DB_PORT}:5432
+    networks:
+      - meus-pagamentos-network
+    volumes:
+      - meus-pagamentos-postgres-data:/var/lib/postgresql/data
+
 networks:
-  boilerplate-ts-network:
-    name: boilerplate-ts-network
+  meus-pagamentos-network:
+    name: meus-pagamentos-network
+
+volumes:
+  meus-pagamentos-postgres-data:
+    name: meus-pagamentos-postgres-data
