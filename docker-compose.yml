@@ -8,6 +8,8 @@ services:
     command: npm run dev
     environment:
       - NODE_ENV=development
+      - DB_HOST=postgres
+      - 'DB_PORT=5432'
     env_file:
       - .env
     volumes:
@@ -17,6 +19,8 @@ services:
       - 9229:9229
     networks:
       - meus-pagamentos-network
+    depends_on:
+      - postgres
     restart: unless-stopped
 
   postgres:
@@ -32,7 +36,7 @@ services:
     networks:
       - meus-pagamentos-network
     volumes:
-      - meus-pagamentos-postgres-data:/var/lib/postgresql/data
+      - meus-pagamentos-postgres-data:/data
 
 networks:
   meus-pagamentos-network:
