@@ -5,6 +5,8 @@ import express, { NextFunction, Request, Response } from 'express';
 
 import 'express-async-errors';
 
+import '@shared/infra/container';
+
 import { AppError } from '../errors/appError';
 import morganMiddleware from './middlewares/morganMiddleware';
 import { router } from './routes';
