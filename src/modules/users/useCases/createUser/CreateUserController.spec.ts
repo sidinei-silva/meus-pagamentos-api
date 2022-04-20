@@ -1,6 +1,5 @@
 import request from 'supertest';
 
-import { postgresDataSource } from '@shared/infra/database/typeorm/datasources/postgresDataSource';
 import { sqliteDataSource } from '@shared/infra/database/typeorm/datasources/sqliteDataSource';
 import { app } from '@shared/infra/http/app';
 

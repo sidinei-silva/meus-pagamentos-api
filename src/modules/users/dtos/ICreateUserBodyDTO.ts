@@ -1,4 +1,4 @@
-import { IsString, IsEmail, MinLength, Contains } from 'class-validator';
+import { IsString, IsEmail, MinLength } from 'class-validator';
 
 export class ICreateUserBodyDTO {
   @IsString()
