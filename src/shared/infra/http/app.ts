@@ -7,10 +7,13 @@ import 'express-async-errors';
 
 import '@shared/infra/container';
 
+import { loadPassportStrategies } from '@modules/authentication/infra/passport/strategies';
+
 import { AppError } from '../errors/appError';
 import morganMiddleware from './middlewares/morganMiddleware';
 import { router } from './routes';
 
+loadPassportStrategies();
 const app = express();
 
 app.use(express.json());
